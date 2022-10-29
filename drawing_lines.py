@@ -22,12 +22,12 @@ def midpoint(ax, ay, bx, by):
 
   while(x<bx):
     x = x + 1
-      if(F<0):
-        F = F + h
+  if(F<0):
+    F = F + h
 
-      else: 
-        F = F + (h-w)
-        y = y + 1
+   else: 
+     F = F + (h-w)
+     y = y + 1
         
   xcoordinates.append(x)
   ycoordinates.append(y)
