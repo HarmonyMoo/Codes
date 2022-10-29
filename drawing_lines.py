@@ -3,15 +3,9 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-
-print("Enter the value of x1: ")
-x1 = int(input())
-print("Enter the value of x2: ")
-x2 = int(input())
-print("Enter the value of y1: ")
-y1 = int(input())
-print("Enter the value of y2: ")
-y2 = int(input())
+/*
+fig = plt.figure(figsize=(10, 4))
+st.pyplot(fig)
 
 dx = x2 - x1
 dy = y2 - y1
@@ -34,7 +28,7 @@ while i < steps:
     i +=1
     x1 = x1 + xincrement
     y1 = y1 + yincrement
-    print("X: ",x1, "Y: ", y1)
+    st.header("X: ",x1, "Y: ", y1)
     xcoordinates.append(x1)
     ycoordinates.append(y1)
 
@@ -66,7 +60,7 @@ def midpoint(x1, y1, x2, y2):
     x = x1
     y = y1
 
-    print(f"x = {x}, y = {y}")
+    st.header(f"x = {x}, y = {y}")
     # Initialize the plotting points
     xcoordinates = [x]
     ycoordinates = [y]
@@ -84,7 +78,7 @@ def midpoint(x1, y1, x2, y2):
 
         xcoordinates.append(x)
         ycoordinates.append(y)
-        print(f"x = {x}, y = {y}")
+        st.header(f"x = {x}, y = {y}")
     plt.plot(xcoordinates, ycoordinates)
     plt.show()
 
@@ -114,8 +108,8 @@ def bres(x1,y1,x2,y2):
         x2, y2 = y2, x2
 
     p = 2*dy - dx
-    print(f"x = {x}, y = {y}")
-    # Initialize the plotting points
+    st.header(f"x = {x}, y = {y}")
+    
     xcoordinates = [x]
     ycoordinates = [y]
 
@@ -128,7 +122,7 @@ def bres(x1,y1,x2,y2):
 
         x = x + 1 if x < x2 else x - 1
 
-        print(f"x = {x}, y = {y}")
+        st.header(f"x = {x}, y = {y}")
         xcoordinates.append(x)
         ycoordinates.append(y)
 
@@ -146,8 +140,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-import matplotlib.pyplot as plt
+*/
 
 plt.title("Bresenham Algorithm")
 plt.xlabel("X Axis")
@@ -166,7 +159,7 @@ def function(x1,y1,x2,y2):
         x2, y2 = y2, x2
 
     F = 2*h-w
-    print(f"x = {x}, y = {y}")
+    st.header(f"x = {x}, y = {y}")
     xcoordinates = [x]
     ycoordinates = [y]
 
@@ -179,12 +172,17 @@ def function(x1,y1,x2,y2):
 
         x = x + 1 if x < x2 else x - 1
 
-        print(f"x = {x}, y = {y}")
+        st.header(f"x = {x}, y = {y}")
         xcoordinates.append(x)
         ycoordinates.append(y)
-
+    
+    fig = plt.figure(figsize=(10, 4))
+    plt.title("Midpoint Line Algorithm")
+    plt.xlabel("X-Axis")
+    plt.ylabel("Y-Axis")
     plt.plot(xcoordinates, ycoordinates)
     plt.show()
+    st.pyplot(fig)
 
 
 def main():
@@ -196,4 +194,12 @@ def main():
     bres(x1, y1, x2, y2)
 
 if __name__ == "__main__":
+    print("Enter the value of x1: ")
+    x1 = int(input())
+    print("Enter the value of x2: ")
+    x2 = int(input())
+    print("Enter the value of y1: ")
+    y1 = int(input())
+    print("Enter the value of y2: ")
+    y2 = int(input())
     main()
