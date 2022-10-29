@@ -1,205 +1,57 @@
+
+"""Midpoint"""
 import streamlit as st
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-/*
+
+
+def midpoint(ax, ay, bx, by):
+  w = bx - ax
+  h = by - ay
+  F = (h-w)/2
+
+  x = ax
+  y = ay
+
+  st.header(f"x = {x}, y = {y}")
+
+  xcoordinates = [x]
+  ycoordinates = [y]
+
+  while(x<bx):
+    x = x + 1
+      if(F<0):
+        F = F + h
+
+      else: 
+        F = F + (h-w)
+        y = y + 1
+        
+    xcoordinates.append(x)
+    ycoordinates.append(y)
+    st.header(f"x = {x}, y = {y}")
+    
 fig = plt.figure(figsize=(10, 4))
-st.pyplot(fig)
-
-dx = x2 - x1
-dy = y2 - y1
-
-if abs(dx) > abs(dy):
-    steps = abs(dx)
-else:
-    steps = abs(dy)
-
-xincrement = dx/steps
-yincrement = dy/steps
-
-i = 0;
-
-xcoordinates = [];
-ycoordinates = [];
-
-
-while i < steps:
-    i +=1
-    x1 = x1 + xincrement
-    y1 = y1 + yincrement
-    st.header("X: ",x1, "Y: ", y1)
-    xcoordinates.append(x1)
-    ycoordinates.append(y1)
-
-plt.plot(xcoordinates, ycoordinates)
-
-#Naming the Axis
+plt.title("Midpoint Line Algorithm")
 plt.xlabel("X-Axis")
 plt.ylabel("Y-Axis")
-
-#Graph title
-plt.title("DDA Algorithm")
-
-#show the plot
-
+plt.plot(xcoordinates, ycoordinates)
 plt.show()
-
-import matplotlib.pyplot as plt
-
-plt.title("Midpoint Line Algorithm")
-plt.xlabel("X Axis")
-plt.ylabel("Y Axis")
-
-def midpoint(x1, y1, x2, y2):
-    dx = x2 - x1
-    dy = y2 - y1
-
-    # Initialize the decision parameter
-    d  = dy - (dx/2)
-    x = x1
-    y = y1
-
-    st.header(f"x = {x}, y = {y}")
-    # Initialize the plotting points
-    xcoordinates = [x]
-    ycoordinates = [y]
-
-    while (x<x2):
-        x = x + 1
-        # East is Chosen
-        if (d<0):
-            d = d + dy
-
-        # North East is Chosen
-        else:
-            d = d + (dy - dx)
-            y = y + 1
-
-        xcoordinates.append(x)
-        ycoordinates.append(y)
-        st.header(f"x = {x}, y = {y}")
-    plt.plot(xcoordinates, ycoordinates)
-    plt.show()
+st.pyplot(fig)
 
 if __name__=="__main__":
-    x1 = int(input("Enter the starting point of x: "))
-    y1 = int(input("Enter the starting point of y: "))
-    x2 = int(input("Enter the end point of x: "))
-    y2 = int(input("Enter the end point of y: "))
+  print("Enter the starting point of x: ")
+  x1 = int(input())
+  
+  print("Enter the starting point of y: ")
+  y1 = int(input())
 
-    midpoint(x1, y1, x2, y2)
+  print("Enter the ending point of x: ")
+  x2 = int(input())
+  
+  print("Enter the ending poing of y: ")
+  y2 = int(input())
 
-import matplotlib.pyplot as plt
-plt.title("Bresenham Algorithm")
-plt.xlabel("X Axis")
-plt.ylabel("Y Axis")
-
-def bres(x1,y1,x2,y2):
-    x,y = x1,y1
-    dx = abs(x2 - x1)
-    dy = abs(y2 -y1)
-    gradient = dy/float(dx)
-
-    if gradient > 1:
-        dx, dy = dy, dx
-        x, y = y, x
-        x1, y1 = y1, x1
-        x2, y2 = y2, x2
-
-    p = 2*dy - dx
-    st.header(f"x = {x}, y = {y}")
-    
-    xcoordinates = [x]
-    ycoordinates = [y]
-
-    for k in range(2, dx + 2):
-        if p > 0:
-            y = y + 1 if y < y2 else y - 1
-            p = p + 2 * (dy - dx)
-        else:
-            p = p + 2 * dy
-
-        x = x + 1 if x < x2 else x - 1
-
-        st.header(f"x = {x}, y = {y}")
-        xcoordinates.append(x)
-        ycoordinates.append(y)
-
-    plt.plot(xcoordinates, ycoordinates)
-    plt.show()
-
-
-def main():
-    x1 = int(input("Enter the Starting point of x: "))
-    y1 = int(input("Enter the Starting point of y: "))
-    x2 = int(input("Enter the end point of x: "))
-    y2 = int(input("Enter the end point of y: "))
-
-    bres(x1, y1, x2, y2)
-
-if __name__ == "__main__":
-    main()
-*/
-
-plt.title("Bresenham Algorithm")
-plt.xlabel("X Axis")
-plt.ylabel("Y Axis")
-
-def function(x1,y1,x2,y2):
-    x,y = x1,y1
-    w = abs(x2 - x1)
-    h = abs(y2 -y1)
-    gradient = h/float(w)
-
-    if gradient > 1:
-        h, w = w, h
-        x, y = y, x
-        x1, y1 = y1, x1
-        x2, y2 = y2, x2
-
-    F = 2*h-w
-    st.header(f"x = {x}, y = {y}")
-    xcoordinates = [x]
-    ycoordinates = [y]
-
-    for k in range(2, dx + 2):
-        if F < 0:
-            F += 2*h
-        else:
-            F += 2*(h-w)
-            y = y+1
-
-        x = x + 1 if x < x2 else x - 1
-
-        st.header(f"x = {x}, y = {y}")
-        xcoordinates.append(x)
-        ycoordinates.append(y)
-    
-    fig = plt.figure(figsize=(10, 4))
-    plt.title("Midpoint Line Algorithm")
-    plt.xlabel("X-Axis")
-    plt.ylabel("Y-Axis")
-    plt.plot(xcoordinates, ycoordinates)
-    plt.show()
-    st.pyplot(fig)
-
-
-def main():
-    x1 = int(input("Enter the Starting point of x: "))
-    y1 = int(input("Enter the Starting point of y: "))
-    x2 = int(input("Enter the end point of x: "))
-    y2 = int(input("Enter the end point of y: "))
-
-    bres(x1, y1, x2, y2)
-
-if __name__ == "__main__":
-    print("Enter the value of x1: ")
-    x1 = int(input())
-    print("Enter the value of x2: ")
-    x2 = int(input())
-    print("Enter the value of y1: ")
-    y1 = int(input())
-    print("Enter the value of y2: ")
-    y2 = int(input())
-    main()
+  midpoint(x1, y1, x2, y2)
