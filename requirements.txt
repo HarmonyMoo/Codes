@@ -5,3 +5,4 @@ sklearn
 seaborn
 matplotlib
 sklearn
+numpy
