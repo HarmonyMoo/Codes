@@ -29,9 +29,9 @@ def midpoint(ax, ay, bx, by):
         F = F + (h-w)
         y = y + 1
         
-    xcoordinates.append(x)
-    ycoordinates.append(y)
-    st.header(f"x = {x}, y = {y}")
+  xcoordinates.append(x)
+  ycoordinates.append(y)
+  st.header(f"x = {x}, y = {y}")
     
 fig = plt.figure(figsize=(10, 4))
 plt.title("Midpoint Line Algorithm")
